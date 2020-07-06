@@ -3,12 +3,15 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import TaskDetails from './components/tasks/TaskDetails'; 
 import ProjectList from './components/projects/ProjectList';
-import Navbar from './components/navbar/Navbar';
+import Navigationbar from './components/navbar/Navigationbar';
 import ProjectDetails from './components/projects/ProjectDetails';
 import AuthService from './components/auth/Auth-service';
 
 import Signup from './components/auth/Signup'; 
 import Login from './components/auth/Login';    // ------->>>>>>>>>>>
+
+
+import 'bootstrap/dist/css/bootstrap.min.css'  // REACT-BOOTSTRAP
  
 
 class App extends Component {
@@ -45,7 +48,7 @@ class App extends Component {
     if(this.state.loggedInUser){
       return (
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser}  getUser={this.getTheUser}/>
+          <Navigationbar userInSession={this.state.loggedInUser}  getUser={this.getTheUser}/>
           <Switch>
             <Route exact path="/projects" component={ProjectList}/>
             <Route exact path="/projects/:id" component={ProjectDetails} />
@@ -56,7 +59,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+          <Navigationbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
           <Switch>
             <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
                                      
