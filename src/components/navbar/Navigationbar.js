@@ -6,6 +6,9 @@ import AuthService from '../auth/Auth-service';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button'
+
+import PostsList from '../posts/PostsList'
 
 // changes made in Bootstrap's Nav.Link
 // https://stackoverflow.com/questions/54843302/reactjs-bootstrap-navbar-and-routing-not-working-together
@@ -33,36 +36,41 @@ class Navigationbar extends Component {
   render(){
     if(this.state.loggedInUser){
       return(
-        <nav >
-          <ul>
-            <li>Welcome, {this.state.loggedInUser.username}</li>
-            <li><Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link></li>
-            <li>
-              <Link to='/'>
-                <button onClick={() => this.logoutUser()}>Logout</button>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+       
+            <Container>
+            <h3>Welcome, {this.state.loggedInUser.username}</h3>
+               <Navbar bg="light" variant="light">
+                  <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
+                  <Nav className="mr-auto">
+
+                    <Nav.Link as={Link} to="/#">My Profile</Nav.Link> 
+                    <Nav.Link as={Link} to="/#">Create Post</Nav.Link> 
+                    <Nav.Link as={Link} to="/#">Followed Posts</Nav.Link> 
+
+                    <Nav.Link as={Link} to="/">
+                        <Button onClick={() => this.logoutUser()}>Logout</Button>
+                    </Nav.Link>
+
+                  </Nav>
+              </Navbar>
+
+              <PostsList/>
+               
+            </Container> 
+
       )
     } else {
       return ( 
-        // <nav >
-        //   <ul>
-        //     <li><Link to='/' style={{ textDecoration: 'none' }}>Login</Link></li>
-        //     <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
-        //   </ul>
-        // </nav>
 
-       <Container>
-          <Navbar bg="light" variant="light">
-            <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
-            <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/signup">Signup</Nav.Link> 
-              <Nav.Link as={Link} to="/">Login</Nav.Link>
-            </Nav>
-          </Navbar>
-      </Container> 
+          <Container>
+              <Navbar bg="light" variant="light">
+                <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
+                <Nav className="mr-auto">
+                  <Nav.Link as={Link} to="/signup">Signup</Nav.Link> 
+                  <Nav.Link as={Link} to="/">Login</Nav.Link>
+                </Nav>
+              </Navbar>
+          </Container> 
        
       )
     }

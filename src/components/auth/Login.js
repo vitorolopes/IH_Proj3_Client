@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import AuthService from './Auth-service';
 import { Link } from 'react-router-dom';
 
-
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -38,19 +36,6 @@ class Login extends Component {
     
   render(){
     return(
-      // <div>
-      //   <form onSubmit={this.handleFormSubmit}>
-      //     <label>Username:</label>
-      //     <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-      //     <label>Password:</label>
-      //     <input name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          
-      //     <input type="submit" value="Login" />
-      //   </form>
-      //   <p>Don't have account? 
-      //       <Link to={"/signup"}> Signup</Link>
-      //   </p>
-      // </div>
 
       <Card style={{ width: '28rem' }}>
               <Card.Img variant="top" src={logo} />
@@ -66,8 +51,6 @@ class Login extends Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
                           </Form.Group>
-
-                     
                       
                           <hr></hr>
 
@@ -75,16 +58,11 @@ class Login extends Component {
                             Login
                           </Button> 
                     </form>
-              </Card.Body>
-              
+              </Card.Body>  
               <p>Don't have account? 
                    <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
               </p>
-
         </Card>
-
-
-
     )
   }
 }
