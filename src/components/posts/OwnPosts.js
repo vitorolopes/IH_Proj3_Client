@@ -3,14 +3,13 @@ import axios from 'axios'
 
 import Card from 'react-bootstrap/Card';
 
-
-class PostsList extends Component {
+class OwnPosts extends Component {
     state = {
         listOfPosts: []
     }
 
-    getAllPosts = () => {
-        axios.get("http://localhost:5000/api/allposts")
+    getOwnPosts = () => {
+        axios.get("http://localhost:5000/api/ownposts")
                     .then(responseFromAPI => {
                         this.setState ({
                             listOfPosts: responseFromAPI.data
@@ -20,7 +19,7 @@ class PostsList extends Component {
     }
 
     componentDidMount() {
-      this.getAllPosts()  
+      this.getOwnPosts()  
     }
 
     render() {
@@ -29,15 +28,10 @@ class PostsList extends Component {
                     {this.state.listOfPosts.map(post=> {
                         return(
                             <div key={post._id}> 
-                                <Card style={{ width: '28rem' }}>       
-                                            <Card.Body>
-                                                <Card.Title style={{color: "red"}}>WTF ... post.postedBy--Link to User</Card.Title> 
-                                            </Card.Body>  
-
+                                <Card style={{ width: '28rem' }}>        
                                             <Card.Img variant="top" src={post.photo} />
 
                                             <Card.Body>
-                                                 <Card.Title style={{color: "red"}}>Like_Unlike</Card.Title> 
                                                  <Card.Title>{post.title}</Card.Title> 
                                                  <Card.Text>{post.description}</Card.Text> 
                                             </Card.Body>     
@@ -49,4 +43,4 @@ class PostsList extends Component {
         )
     }
 }
-export default PostsList;
+export default OwnPosts;

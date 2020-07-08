@@ -43,8 +43,9 @@ class Navigationbar extends Component {
                   <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
                   <Nav className="mr-auto">
 
-                    <Nav.Link as={Link} to="/#">My Profile</Nav.Link> 
-                    <Nav.Link as={Link} to="/#">Create Post</Nav.Link> 
+                    <Nav.Link as={Link} to="/">Home</Nav.Link> 
+                    <Nav.Link as={Link} to="/myprofile">My Profile</Nav.Link> 
+                    <Nav.Link as={Link} to="/createpost">Create Post</Nav.Link> 
                     <Nav.Link as={Link} to="/#">Followed Posts</Nav.Link> 
 
                     <Nav.Link as={Link} to="/">
@@ -53,8 +54,6 @@ class Navigationbar extends Component {
 
                   </Nav>
               </Navbar>
-
-              <PostsList/>
                
             </Container> 
 
