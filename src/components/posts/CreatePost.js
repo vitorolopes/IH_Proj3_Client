@@ -2,6 +2,10 @@ import React, { Component } from "react";
  
 // import the service file since we need it to send (and get) the data to(from) server
 import axios from 'axios';
+
+import Card from 'react-bootstrap/Card'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
  
 class CreatePost extends Component {
     state = {
@@ -61,7 +65,7 @@ class CreatePost extends Component {
                     onChange={this.handleChange} />
 
                 <input type="file" onChange={this.handleFileChange} /> 
-                <button type="submit">Save new image</button>
+                <button type="submit">Submit post</button>
                 
             </form>
             <div>{this.state.feedbackMessage}</div>
@@ -69,5 +73,38 @@ class CreatePost extends Component {
         );
     }
 }
+
+// render () {
+//     return (
+        
+//         <Card style={{ width: '28rem' }}>                                                  
+//                     <h1 style= {{ color: "blue"}}>Lets CREATE a POST</h1>      
+
+//                 <form onSubmit={this.handleFormSubmit}>
+
+//                     <Form.Group controlId="exampleForm.ControlInput1">
+//                         <Form.Label>Title</Form.Label>
+//                         <Form.Control type="text" placeholder="title" name='title' value={this.state.title} onChange= {this.handleChange} />
+//                     </Form.Group>
+
+//                     <Form.Group controlId="exampleForm.ControlTextarea1">
+//                         <Form.Label>Description</Form.Label>
+//                         <Form.Control as="textarea" rows="3" name='description' value={this.state.description} onChange= {this.handleChange} />
+//                     </Form.Group>
+
+//                      <Form.Group>
+//                         <Form.File id="exampleFormControlFile1" label="Example file input" onChange= {this.handleFileChange} /> 
+//                     </Form.Group>   
+
+//                     <Button variant="primary" type="submit">
+//                                         Submit Post
+//                     </Button>
+//                 </form>
+//         </Card>
+
+
+//     )
+// }
+// }
  
 export default CreatePost;

@@ -54,7 +54,10 @@ class App extends Component {
           <Navigationbar userInSession={this.state.loggedInUser}  getUser={this.getTheUser}/>
          
          <Switch>
-            <Route exact path="/myprofile" component={MyProfile}/>
+            {/* <Route exact path="/myprofile" component={MyProfile}/> */}
+
+            <Route exact path="/myprofile" render={() => <MyProfile userInSession={this.state.loggedInUser} />}/>
+
             <Route exact path="/createpost" component={CreatePost}/>
             <Route exact path="/" component={PostsList}/>
          </Switch>
