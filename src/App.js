@@ -23,19 +23,19 @@ class App extends Component {
     this.service = new AuthService();
   }
  
-  fetchUser(){
-    if( this.state.loggedInUser === null ){
-      this.service.loggedin()
-      .then(response =>{
-        this.setState({
-          loggedInUser:  response
-        }) 
-      })
-      .catch( err =>{
-        this.setState({
-          loggedInUser:  false
-        }) 
-      })
+  // 1. save the user into the browser localstorage
+  // OR
+  // 2. check if the user is still loggedin by calling the backend
+  fetchUser = () => {
+    if(this.state.loggedInUser === null) {
+      this.service.loggedin() 
+        .then(response => {
+          if (response._id) {
+            this.getTheUser(response);
+          } else {
+            localStorage.clear();
+          }
+        })
     }
   }
  
@@ -44,6 +44,7 @@ class App extends Component {
       loggedInUser: userObj
     })
   }
+
  
   render() {
     this.fetchUser()

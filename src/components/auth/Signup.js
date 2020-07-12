@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import logo from '../../logo.jpg';
+import axios from 'axios';
 
 // how to deal with Bootstrap Forms and the properties of regular HTML forms
 // https://stackoverflow.com/questions/37239799/can-not-submit-form-react-bootstrap
@@ -14,33 +15,69 @@ import logo from '../../logo.jpg';
 class Signup extends Component { 
   constructor(props) {
       super(props)
-      this.state = { username: '', password: '', email:'', userimage:'' };
+      this.state = { username: '', password: '', email:''};
       this.service = new AuthService();
   }
-    
-  
-    handleFormSubmit = (event) => {  
-        event.preventDefault();
-        const {username, password, email, userimage} = this.state
-       
-        this.service.signup(username, password)
-        .then( response => {
-            this.setState({
-                username: "", 
-                password: "",
-                email:'', 
-                userimage:'' 
-            });
-            this.props.getUser(response)
-        })
-        .catch( error => console.log(error) )
-      }
-       
-      handleChange = (event) => {  
+
+    handleChange = (event) => {  
         const {name, value} = event.target;
         this.setState({[name]: value});
       }
-                                          
+
+    handleFileChange = (event) => {
+      console.log('image',  event.target.files[0]);
+        this.setState({ userimage: event.target.files[0]});
+      }
+  
+    handleFormSubmit = (event) => {  
+        event.preventDefault();      
+        const {username, password, email, userimage} = this.state
+       console.log('will submit image', userimage)
+        this.service.signup(username, password, email)
+        .then( response => {
+            this.setState({
+                username: '', 
+                password: '',
+                email:'', 
+            });
+            this.props.getUser(response)
+            localStorage.setItem("loggedin", true);
+        })
+        .catch( error => console.log(error) )
+    }
+
+
+    // handleFormSubmit = (event) => {  
+    //   event.preventDefault();   
+    //   const uploadData = new FormData();
+    //   uploadData.append("userimage", this.state.userimage);
+    //   const {username, password, email} = this.state
+
+    //   axios.post('http://localhost:5000/api/upload', uploadData)
+    //   .then((response) => {
+    //       console.log('image uploaded', response);
+          
+    //       axios.post('http://localhost:5000/api/signup', {
+    //           username: this.state.username,
+    //           password: this.state.password,
+    //           email: this.state.email,
+    //           userimage: response.data.userimage
+    //           })  
+    //          this.service.signup(username, password, email, userimage)
+    //           .then( response => {
+    //                         this.setState({
+    //                             username: '', 
+    //                             password: '',
+    //                             email:'', 
+    //                             userimage:'' 
+    //                         });
+    //                         this.props.getUser(response)
+    //                         localStorage.setItem("loggedin", true);
+    //                     })
+    //                     .catch( error => console.log(error) )
+    //         })
+    // }
+                                             
   render(){
     return(
 
@@ -64,9 +101,12 @@ class Signup extends Component {
                             <Form.Control type="email" placeholder="Enter email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
                           </Form.Group>
 
-                          <Button variant="primary" type="submit">
+                          {/* <Button style={{color:"red"}} variant="primary" type="submit">
                             Upload photo
-                          </Button> 
+                          </Button>  */}
+
+                {/* <input type="file" onChange={this.handleFileChange} />  */}
+                {/* <button type="submit">Save new image</button> */}
                       
                           <hr></hr>
 

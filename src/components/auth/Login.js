@@ -23,8 +23,12 @@ class Login extends Component {
     const password = this.state.password;
     this.service.login(username, password)
     .then( response => {
+       //Set the whole application with the user that just logged in
+        this.props.getUser(response);
         this.setState({ username: "", password: "" });
-        this.props.getUser(response)
+        // this.props.getUser(response)
+        localStorage.setItem("loggedin", true);
+        this.props.history.push('/projects');
     })
     .catch( error => console.log(error) )
   }
