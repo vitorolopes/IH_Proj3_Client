@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 
+import {Link} from 'react-router-dom'
+
 
 
 class MyProfile extends Component {
@@ -52,13 +54,9 @@ class MyProfile extends Component {
 
 
             
-
-
-
-
               <h1>My Posts</h1>
                     {this.state.listOfOwnPosts.map(post=> {
-                       // console.log(post)
+                       console.log(post)
                         return(
                             <div key={post._id}> 
                                 <Card style={{ width: '28rem' }}>       
@@ -69,9 +67,14 @@ class MyProfile extends Component {
                                             <Card.Img variant="top" src={post.imageUrl} />
 
                                             <Card.Body>
+                                                <Link to ={`/updatepost/${post._id}`}>
+                                                   <Card.Title>{post.title}</Card.Title> 
+                                                </Link>
                                                 
-                                                 <Card.Title>{post.title}</Card.Title> 
+
+                                                
                                                  <Card.Text>{post.description}</Card.Text> 
+                                                 
                                             </Card.Body>     
                                 </Card>
                             </div>

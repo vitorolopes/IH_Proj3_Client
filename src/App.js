@@ -9,6 +9,7 @@ import PostsList from './components/posts/PostsList';
 import CreatePost from './components/posts/CreatePost'
 import MyProfile from './components/MyProfile';
 import UpdateProfile from './components/UpdateProfile';
+import UpdatePost from './components/posts/UpdatePost';
 
 
 import Navigationbar from './components/navbar/Navigationbar';
@@ -61,6 +62,7 @@ class App extends Component {
             <Route exact path="/myprofile" render={() => <MyProfile userInSession={this.state.loggedInUser} />}/>
             {/* <Route exact path="/updateprofile" render={() => <UpdateProfile userInSession={this.state.loggedInUser} />}/> */}
             <Route exact path="/updateprofile" component={UpdateProfile} />
+            <Route exact path="/updatepost/:id" component={UpdatePost} />
 
             <Route exact path="/createpost" component={CreatePost}/>
             <Route exact path="/" component={PostsList}/>
