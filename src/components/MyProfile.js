@@ -42,12 +42,13 @@ class MyProfile extends Component {
         return(
           <div>
               <h1>My Personal details</h1>
-              <h1>WTF</h1>
+              
               <h3>Bemvindo, {this.state.loggedInUser.username}</h3>
               <h3>email: {this.state.loggedInUser.email}</h3>
               <img src={this.state.loggedInUser.userimage} style={{width:"20rem", height: "20rem"}} />
               <hr></hr>
               <br></br>
+              <a href="/updateprofile" style={{color:"red", fontWeight:"bolder"}}>Update profile</a>
 
 
             

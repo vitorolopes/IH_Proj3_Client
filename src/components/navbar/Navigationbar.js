@@ -35,7 +35,7 @@ class Navigationbar extends Component {
 
   render(){
     if(this.state.loggedInUser){
-      console.log(this.state.loggedInUser)
+      // console.log(this.state.loggedInUser)
       return(
             <Container>
             <h3>Welcome, {this.state.loggedInUser.username}</h3>

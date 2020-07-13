@@ -6,8 +6,10 @@ import { Switch, Route } from 'react-router-dom';
 // import ProjectDetails from './components/projects/ProjectDetails';
 import AuthService from './components/auth/Auth-service';
 import PostsList from './components/posts/PostsList';
-import MyProfile from './components/MyProfile';
 import CreatePost from './components/posts/CreatePost'
+import MyProfile from './components/MyProfile';
+import UpdateProfile from './components/UpdateProfile';
+
 
 import Navigationbar from './components/navbar/Navigationbar';
 import Signup from './components/auth/Signup'; 
@@ -57,6 +59,8 @@ class App extends Component {
             {/* <Route exact path="/myprofile" component={MyProfile}/> */}
 
             <Route exact path="/myprofile" render={() => <MyProfile userInSession={this.state.loggedInUser} />}/>
+            {/* <Route exact path="/updateprofile" render={() => <UpdateProfile userInSession={this.state.loggedInUser} />}/> */}
+            <Route exact path="/updateprofile" component={UpdateProfile} />
 
             <Route exact path="/createpost" component={CreatePost}/>
             <Route exact path="/" component={PostsList}/>
