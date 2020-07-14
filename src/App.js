@@ -66,6 +66,8 @@ class App extends Component {
 
             <Route exact path="/createpost" component={CreatePost}/>
             <Route exact path="/" component={PostsList}/>
+            {/* <Route exact path="/" render={() => <PostsList userInSession={this.state.loggedInUser} />}/> */}
+            {/* <Route exact path="/likepost/:id"/> */}
          </Switch>
          
          

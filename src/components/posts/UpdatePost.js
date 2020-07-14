@@ -36,17 +36,20 @@ class UpdatePost extends Component {
       }
     // }
  
- // DELETE PROJECT:
- deletePost = () => {
-    const { params } = this.props.match;
-    axios.delete(`http://localhost:5000/api/deletepost/${params.id}`)
-    .then( () =>{
-        this.props.history.push('/myprofile');         
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
-  }
+ // DELETE POST:
+    deletePost = () => {
+        const { params } = this.props.match;
+        console.log(this.props)
+        console.log(params)
+        axios.delete(`http://localhost:5000/api/deletepost/${params.id}`)
+        .then( () =>{
+            this.props.history.push('/myprofile');         
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
 
   render(){
     return (
