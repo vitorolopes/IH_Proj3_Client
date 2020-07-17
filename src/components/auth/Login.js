@@ -62,6 +62,14 @@ class Login extends Component {
                             Login
                           </Button> 
                     </form>
+
+                    <br></br>
+
+                 
+              <Link to="/login-google" style={{color: "red"}}>Login using Google</Link>
+                    
+ 
+
               </Card.Body>  
               <p>Don't have account? 
                    <Nav.Link as={Link} to="/signup">Signup</Nav.Link>

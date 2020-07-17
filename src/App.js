@@ -36,6 +36,7 @@ class App extends Component {
         .then(response => {
           if (response._id) {
             this.getTheUser(response);
+            localStorage.setItem("loggedin", true);
           } else {
             localStorage.clear();
           }
@@ -81,6 +82,7 @@ class App extends Component {
           <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>             
               <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>
+              <Route path='/login-google' component={() => { window.location.href = 'http://localhost:5000/api/auth/google' }}/>
           </Switch>
         </div>
       );
