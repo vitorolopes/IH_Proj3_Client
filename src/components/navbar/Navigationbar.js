@@ -47,6 +47,7 @@ class Navigationbar extends Component {
                     <Nav.Link as={Link} to="/myprofile">My Profile</Nav.Link> 
                     <Nav.Link as={Link} to="/createpost">Create Post</Nav.Link> 
                     <Nav.Link as={Link} to="/#">Followed Posts</Nav.Link> 
+                    <Nav.Link as={Link} to="/login-google">Login using Google</Nav.Link> 
 
                     <Nav.Link as={Link} to="/">
                         <Button onClick={() => this.logoutUser()}>Logout</Button>

@@ -3,7 +3,10 @@ import axios from 'axios'
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 
+import { FaHeart } from 'react-icons/fa';
 
 class PostsList extends Component {
     state = {
@@ -72,24 +75,31 @@ class PostsList extends Component {
                             <div key={post._id}> 
                                 <Card style={{ width: '28rem' }}>       
                                             <Card.Body>
-                                            <Card.Title style={{color: "blue"}}> Posted By: {post.postedBy.username}</Card.Title> 
+                                                <Card.Title style={{color: "blue"}}>
+                                                    <Nav.Link as={Link} to={`otherusersprofile/${post.postedBy._id}`}>
+                                                        Posted By: {post.postedBy.username}
+                                                    </Nav.Link>
+                                                    
+                                                </Card.Title> 
                                             </Card.Body> 
 
                                             {post.likes.includes(post.postedBy._id)
                                             ?
-                                           <Button  
-                                                 onClick={()=>{this.unlikePost(post._id, post.postedBy)}}
-                                                //  style={{backgroundColor: this.state.backColor_unlike}}
-                                            >
-                                                RemoveLike
-                                            </Button>
+                                                <Button  
+                                                    onClick={()=>{this.unlikePost(post._id, post.postedBy)}}
+                                                    //  style={{backgroundColor: this.state.backColor_unlike}}
+                                                    style={{width:"fit-content" }}
+                                                >
+                                                    RemoveLike <FaHeart style={{color: "gray"}} />
+                                                </Button>
                                             :
-                                            <Button 
-                                            onClick={()=>{this.likePost(post._id, post.postedBy)}}
-                                            //  style={{backgroundColor: this.state.backColor_like}}
-                                            >
-                                            LikeThisPost
-                                            </Button>
+                                                <Button 
+                                                    onClick={()=>{this.likePost(post._id, post.postedBy)}}
+                                                //  style={{backgroundColor: this.state.backColor_like}}
+                                                    style={{width:"fit-content" }}
+                                                >
+                                                    Like  <FaHeart style={{color: "red"}} />
+                                                </Button>
                                             } 
 
 

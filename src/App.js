@@ -17,6 +17,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';    // ------->>>>>>>>>>>
 
 import 'bootstrap/dist/css/bootstrap.min.css'  // REACT-BOOTSTRAP
+import OtherUsersProfile from './components/OtherUsersProfile';
  
 
 class App extends Component {
@@ -68,8 +69,8 @@ class App extends Component {
             <Route exact path="/" component={PostsList}/>
             {/* <Route exact path="/" render={() => <PostsList userInSession={this.state.loggedInUser} />}/> */}
             {/* <Route exact path="/likepost/:id"/> */}
+            <Route exact path="/otherusersprofile/:id" component={OtherUsersProfile}/>
          </Switch>
-         
          
         </div>
       );
