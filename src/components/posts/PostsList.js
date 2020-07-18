@@ -11,9 +11,9 @@ import { FaHeart } from 'react-icons/fa';
 class PostsList extends Component {
     state = {
         listOfPosts: [],
-        likes:[]
+        likes:[],
         // unlikes:[],
-        // backColor_like: "gray",
+        backColor_like: "gray",
         // backColor_unlike: "gray"
     }
 
@@ -31,23 +31,28 @@ class PostsList extends Component {
       this.getAllPosts()  
     }
 
+    forceUpdateHandler(){
+        this.forceUpdate();
+      };
+
+    // componentDidUpdate(){
+    //     this.getAllPosts()
+    // }
+
     likePost = (idPost, idUser) => {
-        const { params } = this.props.match; //! params = {} PORQUÊ? Fiz de outra forma usei post._id como argumento de likePost no onClick
-        //console.log(this.props)
-        // axios.put(`http://localhost:5000/api/likepost/${params.id}`, {withCredentials: true}) //! params = {} PORQUÊ? Fiz de outra forma usei post._id como argumento de likePost no onClick
-        // axios.put(`http://localhost:5000/api/likepost/${idPost}`, {withCredentials: true})  
+        const { params } = this.props.match; 
            axios.put(`http://localhost:5000/api/likepost/${idPost}`, {likes: this.state.likes.push(idUser)}, {withCredentials: true})
            .then(responseFromAPI => {
-            console.log(responseFromAPI)
-            this.getAllPosts()  // to REFRESH  the page (update the number of LIKES). NOT WORKING.
+            console.log("resposta?",responseFromAPI)
+            // this.forceUpdateHandler()  
+           /*  this.setState ({
+                state: this.state
+            }) */
+            this.getAllPosts();
          })
         .catch((err)=>{
             console.log(err)
         })
-        this.setState({
-            backColor_like: "blue"
-        })
-        
     }
 
     unlikePost = (idPost, idUser) => {
@@ -59,10 +64,6 @@ class PostsList extends Component {
         .catch((err)=>{
             console.log(err)
         })
-        this.setState({
-            backColor_unlike: "orange"
-        })
-        
     }
 
 
@@ -101,8 +102,6 @@ class PostsList extends Component {
                                                     Like  <FaHeart style={{color: "red"}} />
                                                 </Button>
                                             } 
-
-
 
                                             <h6>{post.likes.length} likes</h6>
                                             {/* <h6>{post.unlikes.length} unlikes</h6> */}

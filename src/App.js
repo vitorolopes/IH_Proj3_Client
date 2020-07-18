@@ -18,7 +18,15 @@ import Login from './components/auth/Login';    // ------->>>>>>>>>>>
 
 import 'bootstrap/dist/css/bootstrap.min.css'  // REACT-BOOTSTRAP
 import OtherUsersProfile from './components/OtherUsersProfile';
- 
+
+import { ToastContainer } from 'react-toastify';
+import {toast} from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure({
+  autoclose: 9000,
+  draggable:false
+})
 
 class App extends Component {
   constructor(props){
@@ -79,6 +87,7 @@ class App extends Component {
       return (
         <div className="App">
           <Navigationbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+          <ToastContainer/>
           <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>             
               <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>

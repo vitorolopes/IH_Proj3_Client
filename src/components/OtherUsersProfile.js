@@ -37,18 +37,19 @@ class OtherUsersProfile extends Component {
 
     componentDidMount() {
          this.getUser()  
+         this.getOtherUserPosts()  
     }
 
-//     getOtherUserPosts = () => {
-//         const { params } = this.props.match;
-//             axios.get(`http://localhost:5000/api/otherusersposts/${params.id}`)  // id do User
-//                 .then(responseFromAPI_2 => {
-//                     this.setState ({
-//                         listOfUserPosts: responseFromAPI_2
-//                     })
-//                     console.log("personalDetails", responseFromAPI_2)
-//                 })         
-//     }
+    getOtherUserPosts = () => {
+        const { params } = this.props.match;
+            axios.get(`http://localhost:5000/api/otherusersposts/${params.id}`)  // id do User
+                .then((responseFromAPI_2) => {
+                    this.setState ({
+                        listOfUserPosts: responseFromAPI_2.data
+                    })
+                    console.log("posts", responseFromAPI_2.data)
+                })         
+    }
 
 //     componentDidMount() {
 //         this.getOtherUserPosts()  
@@ -75,12 +76,12 @@ class OtherUsersProfile extends Component {
               
               <div>
                      {this.state.listOfUserPosts.map(post=> {
-                       console.log(post)
+                       console.log("post", this.state.listOfUserPosts)
                         return(
                             <div key={post._id}> 
                                 <Card style={{ width: '28rem' }}>       
                                             <Card.Body>
-                                                <Card.Title style={{color: "blue"}}> Posted By: {post.postedBy.username}</Card.Title> 
+                                                <Card.Title style={{color: "blue"}}> Posted By: {post.postedBy}</Card.Title> 
                                             </Card.Body>  
                                                 
                                             <Card.Img variant="top" src={post.imageUrl} />
