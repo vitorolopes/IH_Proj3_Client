@@ -24,8 +24,8 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure({
-  autoclose: 9000,
-  draggable:false
+  autoclose: 5000,
+  draggable:false,
 })
 
 class App extends Component {
@@ -75,8 +75,9 @@ class App extends Component {
             <Route exact path="/updatepost/:id" component={UpdatePost} />
 
             <Route exact path="/createpost" component={CreatePost}/>
-            <Route exact path="/" component={PostsList}/>
-            {/* <Route exact path="/" render={() => <PostsList userInSession={this.state.loggedInUser} />}/> */}
+            
+            {/* <Route exact path="/" component={PostsList}/> */}
+            <Route exact path="/" render={() => <PostsList userInSession={this.state.loggedInUser} />}/>
             {/* <Route exact path="/likepost/:id"/> */}
             <Route exact path="/otherusersprofile/:id" component={OtherUsersProfile}/>
          </Switch>
@@ -87,7 +88,7 @@ class App extends Component {
       return (
         <div className="App">
           <Navigationbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
-          <ToastContainer/>
+          <ToastContainer style={{backgroundColor: 'red'}}/>
           <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>             
               <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>

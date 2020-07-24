@@ -7,6 +7,9 @@ import Card from 'react-bootstrap/Card';
 
 import {Link} from 'react-router-dom'
 import OtherUsersPosts from './OtherUsersPosts'
+import Image from 'react-bootstrap/Image'
+
+import { Container, Row, Col } from "react-bootstrap";
 
 
 
@@ -62,37 +65,61 @@ class OtherUsersProfile extends Component {
 
     render() {
         return(
-          <div>
+          <div className="persDetailsMainContainer">
               <div>
-                    <h1>  User Personal details: </h1>
-                    <h1>  Username:  {this.state.personalDetails.username} </h1>
-                    <img src={this.state.personalDetails.userimage} style={{width:"20rem", height: "20rem"}} />
-                    <hr></hr>
-                    <br></br>
-              </div> 
-          
-              {/* <div>{this.goAndGetPosts()} </div>   */}
-               <h1 style={{color: "red"}}>  User POSTs </h1>
-              
-              <div>
-                     {this.state.listOfUserPosts.map(post=> {
-                       console.log("post", this.state.listOfUserPosts)
-                        return(
-                            <div key={post._id}> 
-                                <Card style={{ width: '28rem' }}>       
-                                            <Card.Body>
-                                                <Card.Title style={{color: "blue"}}> Posted By: {post.postedBy}</Card.Title> 
-                                            </Card.Body>  
-                                                
-                                            <Card.Img variant="top" src={post.imageUrl} />
+                <Card  style={{borderColor: '#12a0af', marginTop:'20px'}} >
+                  <div className="persDetailsUpCard">
+                    <h2> {this.state.personalDetails.username} Personal Details</h2>
+                  </div>   
+                </Card>
+                <br></br>
 
-                                            <Card.Body>
-                                                 <Card.Text>{post.description}</Card.Text>     
+                <div>
+                {/* <h3>Bemvindo, {this.state.loggedInUser.username}</h3> */}
+                <Card style={{borderColor: '#12a0af'}}>
+                  <div className="img-email">
+                    <div>
+                        <Image src={this.state.personalDetails.userimage} roundedCircle fluid className="img-profile" />
+                      </div>
+                      <div>
+                        <h3><b>Email:</b> {this.state.personalDetails.email}</h3>
+                        <br></br>
+                        <h3><b>Created:</b> {this.state.personalDetails.createdAt} </h3>
+                      </div>
+                  </div>  
+                </Card>
+                <br></br>
+              </div>
+                    
+            </div> 
+          
+             
+            
+              
+              <div className="persDetailsPostContainer">
+                   <h2 style={{color:"#27AEFC"}}>   {this.state.personalDetails.username} Posts </h2>
+
+                   <Container>
+                    <Row>
+                     {this.state.listOfUserPosts.map(post=> {
+                    //    console.log("post", this.state.listOfUserPosts)
+                        return(
+                         <div key={post._id} className="card-div"> 
+                             <Col xs="6" >
+                                <Card className="cardpost" style={{minHeight:'40rem'}}>                 
+                                            <Card.Img className="cardimg-myprofile" variant="top" src={post.imageUrl} />
+
+                                            <Card.Body className="cardbody">
+                                                 <Card.Title>{post.title}</Card.Title> 
+                                                 <Card.Text className="cardtext">{post.description}</Card.Text>     
                                             </Card.Body>     
                                 </Card>
-                            </div>
+                            </Col>
+                         </div>
                         )
                     })} 
+                 </Row>
+               </Container>
               </div> 
           </div>   
         )}}  

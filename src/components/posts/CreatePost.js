@@ -6,13 +6,15 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import FormControl from "react-bootstrap/FormControl";
  
 class CreatePost extends Component {
     state = {
         title: "",
         description: "",
         imageUrl: "",
-        feedbackMessage: ""
+        feedbackMessage: "",
+        chars_left: 100
     };
     
     handleChange = (event) => {  
@@ -40,71 +42,59 @@ class CreatePost extends Component {
                 .then((response) => {
                     console.log('image created', response);
                     this.setState({ title: '', description: '', imageUrl: '', feedbackMessage: 'Image uploaded sucessfully'});
+                    this.props.history.push('/myprofile');   //-->>> Redirect to /myprofile
                 })
             })
             
     }  
     
+    handleWordCount = event => {
+        const charCount = event.target.value.length;
+        const maxChar = this.state.chars_left;
+        const charLength = maxChar - charCount;
+        this.setState({ chars_left: charLength });
+      }
+
     render() {
         return (
-          <div>
-            <h2>New POST</h2>
-            <form onSubmit={this.handleSubmit}>
-                <label>Title</label>
-                <input 
-                    type="text" 
-                    name="title" 
-                    value={ this.state.title } 
-                    onChange={this.handleChange} />
-
-                <label>Description</label>
-                <textarea 
-                    type="text" 
-                    name="description" 
-                    value={ this.state.description } 
-                    onChange={this.handleChange} />
-
-                <input type="file" onChange={this.handleFileChange} /> 
-                <button type="submit">Submit post</button>
-                
-            </form>
-            <div>{this.state.feedbackMessage}</div>
+          <div style={{marginTop:"200px"}}>
+            <h2 style={{textAlign: "center", color:"blue"}}>New POST</h2>
+            <Card>
+                <Card.Body>
+                  <form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicTitle" style={{color:"blue"}}>  
+                        Title
+                        <FormControl
+                            type="text" 
+                            name="title" 
+                            value={ this.state.title } 
+                            onChange={this.handleChange} >
+                        </FormControl>
+                    </Form.Group>
+                        
+                    <Form.Group controlId="formBasicTitle" style={{color:"blue"}}>        
+                        Description
+                        <FormControl
+                            as="textarea" 
+                            rows={10} maxLength='100' type='text' required onChange={this.handleWordCount}
+                            name="description" 
+                            value={ this.state.description } 
+                            onChange={this.handleChange} >
+                        </FormControl>
+                    </Form.Group>
+                        
+                        <input type="file" onChange={this.handleFileChange} /> 
+                        <Button variant="primary" type="submit">Submit post</Button>
+                        
+                 </form>
+                    <div>{this.state.feedbackMessage}</div>
+                </Card.Body>
+            </Card>
+           
           </div>
         );
     }
 }
 
-// render () {
-//     return (
-        
-//         <Card style={{ width: '28rem' }}>                                                  
-//                     <h1 style= {{ color: "blue"}}>Lets CREATE a POST</h1>      
-
-//                 <form onSubmit={this.handleFormSubmit}>
-
-//                     <Form.Group controlId="exampleForm.ControlInput1">
-//                         <Form.Label>Title</Form.Label>
-//                         <Form.Control type="text" placeholder="title" name='title' value={this.state.title} onChange= {this.handleChange} />
-//                     </Form.Group>
-
-//                     <Form.Group controlId="exampleForm.ControlTextarea1">
-//                         <Form.Label>Description</Form.Label>
-//                         <Form.Control as="textarea" rows="3" name='description' value={this.state.description} onChange= {this.handleChange} />
-//                     </Form.Group>
-
-//                      <Form.Group>
-//                         <Form.File id="exampleFormControlFile1" label="Example file input" onChange= {this.handleFileChange} /> 
-//                     </Form.Group>   
-
-//                     <Button variant="primary" type="submit">
-//                                         Submit Post
-//                     </Button>
-//                 </form>
-//         </Card>
-
-
-//     )
-// }
-// }
  
 export default CreatePost;

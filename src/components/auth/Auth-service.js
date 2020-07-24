@@ -13,6 +13,9 @@ class AuthService {
   signup = (username, password, email, userimage) => {
   return this.service.post('/signup', {username, password, email, userimage})
   .then(response => response.data)
+  .catch(error=> {   // adicionei este catch error para o toastify ir buscar as msgs do BE
+    return Promise.reject(error.response.data.message)
+  })
   }
   
   loggedin = () => {
@@ -23,6 +26,9 @@ class AuthService {
   login = (username, password) => {
     return this.service.post('/login', {username, password})
     .then(response => response.data)
+    .catch(error=> {   // adicionei este catch error para o toastify ir buscar as msgs do BE
+      return Promise.reject(error.response.data.message)
+    })
   }
 
   logout = () => {

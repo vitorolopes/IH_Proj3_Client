@@ -32,7 +32,7 @@ class UpdatePost extends Component {
         //                                                    {...props} => so we can have 'this.props.history' in Edit.js
         //                                                                                          ^
         //                                                                                          |
-        return <EditPost thePost={this.state} getThePost={this.getSinglePost} {...this.props} />
+        return <EditPost thePost={this.state} getThePost={this.getSinglePost} deleteThePost={this.deletePost} {...this.props} />
       }
     // }
  
@@ -56,7 +56,7 @@ class UpdatePost extends Component {
     <div>
          <div>{this.renderEditForm()} </div>  
 
-         <button onClick={() => this.deletePost()}>Delete post</button>  
+         {/* <button onClick={() => this.deletePost()}>Delete post</button>   */}
     </div>
 )}}
 export default UpdatePost

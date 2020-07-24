@@ -37,37 +37,39 @@ class Navigationbar extends Component {
     if(this.state.loggedInUser){
       // console.log(this.state.loggedInUser)
       return(
-            <Container>
-            <h3>Welcome, {this.state.loggedInUser.username}</h3>
-               <Navbar bg="light" variant="light">
-                  <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
+            <Container >
+               <Navbar className="navbar-container" bg="light" variant="light">
+                  <Navbar.Text style={{color: "black"}}>TRAVELGRAM</Navbar.Text>
+                  <img className="img-navigationbar" src={this.state.loggedInUser.userimage}></img>
+                  <Navbar.Text style={{fontSize: "15px", marginLeft:"5px", color:"blue"}}> {this.state.loggedInUser.username} </Navbar.Text>
+                  <Navbar.Toggle/>
+                  <Navbar.Collapse className="justify-content-end"></Navbar.Collapse>
                   <Nav className="mr-auto">
-
                     <Nav.Link as={Link} to="/">Home</Nav.Link> 
                     <Nav.Link as={Link} to="/myprofile">My Profile</Nav.Link> 
                     <Nav.Link as={Link} to="/createpost">Create Post</Nav.Link> 
-                    <Nav.Link as={Link} to="/#">Followed Posts</Nav.Link> 
-
+                    {/* <Nav.Link as={Link} to="/#">Followed Posts</Nav.Link>  */}
+                  </Nav>
                     <Nav.Link as={Link} to="/">
                         <Button onClick={() => this.logoutUser()}>Logout</Button>
                     </Nav.Link>
-
-                  </Nav>
               </Navbar>
-               
+                
             </Container> 
 
       )
     } else {
       return ( 
 
-          <Container>
-              <Navbar bg="light" variant="light">
-                <Navbar.Brand href="#home">Travelgram</Navbar.Brand>
-                <Nav className="mr-auto">
-                  <Nav.Link as={Link} to="/signup">Signup</Nav.Link> 
-                  <Nav.Link as={Link} to="/">Login</Nav.Link>
-                </Nav>
+          <Container >
+              <Navbar  className="navbar-container" bg="light" variant="light">
+              <Navbar.Text style={{color: "black"}}>TRAVELGRAM</Navbar.Text>
+                  <Navbar.Toggle/>
+                  <Navbar.Collapse className="justify-content-end"></Navbar.Collapse>
+                    <Nav >
+                      <Nav.Link as={Link} to="/signup">Signup</Nav.Link> 
+                      <Nav.Link as={Link} to="/">Login</Nav.Link>
+                    </Nav>
               </Navbar>
           </Container> 
        

@@ -1,4 +1,190 @@
 .mr-auto {
     float: right;
-    border: 1px solid red
+}
+
+.main-rightcontainer {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    padding:20px
+}
+
+
+.signup-rightdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-rightupdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-rightdowndiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.main-container{
+   display: flex;
+   margin-top: 150px;
+   align-items: center
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 150px */
+    /* border: 1px solid red */
+}
+
+.navbar-container {
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.img-profile{
+    width: 20rem;
+    height: 20rem;
+    border: 1px solid #12a0af
+}
+
+.persDetailsUpCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+    color: #12a0af;
+}
+
+.img-email{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #12a0af;
+    padding: 10px;
+}
+
+.cardimg-postlist {
+    padding: 5px;
+    object-fit: cover;
+    min-width: 20rem;
+    min-height: 20rem;
+    /* border: 1px solid #12a0af */
+}
+
+
+.cardimg-myprofile {
+    padding: 5px;
+    object-fit: cover;
+    min-width: 30rem;
+    min-height: 30rem;
+    /* border: 1px solid #12a0af */
+}
+
+.cardtext {
+    /* background-color: #27AEFC; */
+    background-color: black;
+    color: white;
+    text-align: center;
+    max-width: 99%;
+}
+
+.cardpost{
+   width: 33rem;
+   /* width: 28rem; */
+   align-items: center;
+}
+
+.card-div{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+}
+
+
+.persDetailsMainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.persDetailsPostContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red */
+}
+
+.editpostimg {
+    max-width: 40rem;
+    max-height: 40rem;
+    padding: 10px;
+}
+
+.editpostcardmaindiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.updateprofile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #12a0af;
+    margin-top: 200px
+}
+
+.cardupdateprofile{
+    width: 50rem;
+    /* color:#12a0af; */
+    border: 1px solid #12a0af
+}
+
+.updateprofileform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardpost-postlist{
+    margin: 10px;
+    color: blue;
+    /* width: '20rem'; */
+    /* border:'1px solid green'; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.google-img{
+    max-width: 2rem;
+    max-height: 2rem; 
+    border-radius: 20%;
+}
+
+.img-navigationbar{
+    max-width: 5rem;
+    max-height: 5rem; 
+    border-radius: 100%;
+    border: 1px solid blue;
+    margin-left: 10px;
+}
+
+.cardbody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 99%;
 }
