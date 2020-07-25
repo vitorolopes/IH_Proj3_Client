@@ -92,7 +92,7 @@ class App extends Component {
           <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>             
               <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>
-              <Route path='/login-google' component={() => { window.location.href = 'http://localhost:5000/api/auth/google' }}/>
+              <Route path='/login-google' component={() => { window.location.href = 'https://ih-proj3-be.herokuapp.com/api/auth/google' }}/>
           </Switch>
         </div>
       );

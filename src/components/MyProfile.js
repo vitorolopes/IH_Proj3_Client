@@ -28,7 +28,7 @@ class MyProfile extends Component {
     // }
 
     getOwnPosts = () => {
-      axios.get("http://localhost:5000/api/ownposts", {withCredentials: true}) //  -------->>>>>>>>>>>>> é aqui q é passado o Id do User  <<<<<<<<<<<<------------
+      axios.get("https://ih-proj3-be.herokuapp.com/api/ownposts", {withCredentials: true}) //  -------->>>>>>>>>>>>> é aqui q é passado o Id do User  <<<<<<<<<<<<------------
                   .then(responseFromAPI => {
                       this.setState ({
                           listOfOwnPosts: responseFromAPI.data

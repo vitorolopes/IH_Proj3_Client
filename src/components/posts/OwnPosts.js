@@ -9,7 +9,7 @@ class OwnPosts extends Component {
     }
 
     getOwnPosts = () => {
-        axios.get("http://localhost:5000/api/ownposts")
+        axios.get("https://ih-proj3-be.herokuapp.com/api/ownposts")
                     .then(responseFromAPI => {
                         this.setState ({
                             listOfPosts: responseFromAPI.data

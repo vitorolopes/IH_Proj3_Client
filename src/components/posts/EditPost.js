@@ -20,7 +20,7 @@ class EditPost extends Component {
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/api/updatepost/${this.props.thePost._id}`, 
+    axios.put(`https://ih-proj3-be.herokuapp.com/api/updatepost/${this.props.thePost._id}`, 
                   { title, description })
     .then( () => {
          this.props.getThePost();

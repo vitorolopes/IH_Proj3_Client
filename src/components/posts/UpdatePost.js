@@ -15,7 +15,7 @@ class UpdatePost extends Component {
    
     getSinglePost = () => {
         const { params } = this.props.match;
-        axios.get(`http://localhost:5000/api/posts/${params.id}`)
+        axios.get(`https://ih-proj3-be.herokuapp.com/api/posts/${params.id}`)
         .then( responseFromApi =>{
             const thePost = responseFromApi.data;
             this.setState(thePost);
@@ -41,7 +41,7 @@ class UpdatePost extends Component {
         const { params } = this.props.match;
         console.log(this.props)
         console.log(params)
-        axios.delete(`http://localhost:5000/api/deletepost/${params.id}`)
+        axios.delete(`https://ih-proj3-be.herokuapp.com/api/deletepost/${params.id}`)
         .then( () =>{
             this.props.history.push('/myprofile');         
         })

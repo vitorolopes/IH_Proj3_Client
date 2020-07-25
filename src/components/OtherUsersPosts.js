@@ -24,7 +24,7 @@ class OtherUsersProfile extends Component {
 
     getOtherUserPosts = () => {
         // const { params } = this.props.match;
-            axios.get(`http://localhost:5000/api/otherusersposts/${this.props.theUser._id}`)  // id do User
+            axios.get(`https://ih-proj3-be.herokuapp.com/api/otherusersposts/${this.props.theUser._id}`)  // id do User
                 .then(responseFromAPI => {
                     this.setState ({
                         listOfOtherUserPosts: responseFromAPI

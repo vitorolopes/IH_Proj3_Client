@@ -27,7 +27,7 @@ class OtherUsersProfile extends Component {
 
     getUser = () => {
         const { params } = this.props.match;
-            axios.get(`http://localhost:5000/api/otherusersprofile/${params.id}`)  // id do User
+            axios.get(`https://ih-proj3-be.herokuapp.com/api/otherusersprofile/${params.id}`)  // id do User
                 .then(responseFromAPI => {
                     this.setState ({
                         personalDetails: responseFromAPI.data
@@ -45,7 +45,7 @@ class OtherUsersProfile extends Component {
 
     getOtherUserPosts = () => {
         const { params } = this.props.match;
-            axios.get(`http://localhost:5000/api/otherusersposts/${params.id}`)  // id do User
+            axios.get(`https://ih-proj3-be.herokuapp.com/api/otherusersposts/${params.id}`)  // id do User
                 .then((responseFromAPI_2) => {
                     this.setState ({
                         listOfUserPosts: responseFromAPI_2.data

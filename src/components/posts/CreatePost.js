@@ -30,11 +30,11 @@ class CreatePost extends Component {
         event.preventDefault();
         const uploadData = new FormData();
         uploadData.append("imageUrl", this.state.imageUrl);
-        axios.post('http://localhost:5000/api/upload', uploadData)
+        axios.post('https://ih-proj3-be.herokuapp.com/api/upload', uploadData)
             .then((response) => {
                 console.log('image uploaded', response);
                 
-                axios.post('http://localhost:5000/api/createpost', {
+                axios.post('https://ih-proj3-be.herokuapp.com/api/createpost', {
                     title: this.state.title,
                     description: this.state.description,
                     imageUrl: response.data.imageUrl

@@ -28,11 +28,11 @@ class UpdateProfile extends Component {
         const uploadData = new FormData();
         uploadData.append("imageUrl", this.state.file);
         console.log(this.state.file)
-        axios.post('http://localhost:5000/api/upload', uploadData)
+        axios.post('https://ih-proj3-be.herokuapp.com/api/upload', uploadData)
             .then((response) => {
                 console.log('image uploaded', response);
                 
-                axios.post('http://localhost:5000/api/updateprofile', {  // -->>>> MUDAR ISTO PARA  updateuser
+                axios.post('https://ih-proj3-be.herokuapp.com/api/updateprofile', {  // -->>>> MUDAR ISTO PARA  updateuser
                    username: this.state.username,
                    email: this.state.email,
                    userimage: response.data.imageUrl

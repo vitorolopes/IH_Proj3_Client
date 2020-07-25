@@ -30,7 +30,7 @@ class PostsList extends Component {
       }
 
     getAllPosts = () => {
-        axios.get("http://localhost:5000/api/allposts")
+        axios.get("https://ih-proj3-be.herokuapp.com/api/allposts")
                     .then(responseFromAPI => {
                         this.setState ({
                             listOfPosts: responseFromAPI.data
@@ -53,7 +53,7 @@ class PostsList extends Component {
 
     likePost = (idPost, idUser) => {
         // const { params } = this.props.match; 
-           axios.put(`http://localhost:5000/api/likepost/${idPost}`, {likes: this.state.likes.push(idUser)}, {withCredentials: true})
+           axios.put(`https://ih-proj3-be.herokuapp.com/api/likepost/${idPost}`, {likes: this.state.likes.push(idUser)}, {withCredentials: true})
            .then(responseFromAPI => {
             console.log("resposta?",responseFromAPI)
             // this.forceUpdateHandler()  
@@ -68,7 +68,7 @@ class PostsList extends Component {
     }
 
     unlikePost = (idPost, idUser) => {
-           axios.put(`http://localhost:5000/api/unlikepost/${idPost}`, {likes: this.state.likes.push(idUser)}, {withCredentials: true})
+           axios.put(`https://ih-proj3-be.herokuapp.com/api/unlikepost/${idPost}`, {likes: this.state.likes.push(idUser)}, {withCredentials: true})
            .then(responseFromAPI => {
             console.log(responseFromAPI)
             this.getAllPosts()  // to update Likes and RemoveLikes without having to reload the page
